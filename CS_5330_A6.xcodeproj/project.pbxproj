@@ -14,6 +14,7 @@
 		03AADE1F2B795C5F009FA6E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03AADE1E2B795C5F009FA6E2 /* Assets.xcassets */; };
 		03AADE222B795C5F009FA6E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03AADE202B795C5F009FA6E2 /* LaunchScreen.storyboard */; };
 		03AADE2A2B7AFF86009FA6E2 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AADE292B7AFF86009FA6E2 /* SummaryViewController.swift */; };
+		03AADE2C2B7C7B3F009FA6E2 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AADE2B2B7C7B3F009FA6E2 /* CurrencyConverter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		03AADE212B795C5F009FA6E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03AADE232B795C5F009FA6E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03AADE292B7AFF86009FA6E2 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
+		03AADE2B2B7C7B3F009FA6E2 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				03AADE1E2B795C5F009FA6E2 /* Assets.xcassets */,
 				03AADE202B795C5F009FA6E2 /* LaunchScreen.storyboard */,
 				03AADE232B795C5F009FA6E2 /* Info.plist */,
+				03AADE2B2B7C7B3F009FA6E2 /* CurrencyConverter.swift */,
 			);
 			path = CS_5330_A6;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03AADE1A2B795C5D009FA6E2 /* ViewController.swift in Sources */,
+				03AADE2C2B7C7B3F009FA6E2 /* CurrencyConverter.swift in Sources */,
 				03AADE162B795C5D009FA6E2 /* AppDelegate.swift in Sources */,
 				03AADE182B795C5D009FA6E2 /* SceneDelegate.swift in Sources */,
 				03AADE2A2B7AFF86009FA6E2 /* SummaryViewController.swift in Sources */,

@@ -132,6 +132,18 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="AmountTextField" destination="o2W-qq-M5t" id="j9g-uS-9b1"/>
+                        <outlet property="ConvertButton" destination="JJ0-iz-1tU" id="ahq-AA-mK3"/>
+                        <outlet property="CurrencyFourLabel" destination="8kY-Jc-7U0" id="fyI-Hc-hi4"/>
+                        <outlet property="CurrencyFourSwitch" destination="gWz-o5-N0I" id="vPU-Dv-jur"/>
+                        <outlet property="CurrencyOneLabel" destination="teR-BG-ymE" id="Xbf-sz-NK3"/>
+                        <outlet property="CurrencyOneSwitch" destination="fEr-dB-Cdy" id="H0d-tu-WQc"/>
+                        <outlet property="CurrencyThreeLabel" destination="V63-mp-Hvk" id="dlk-G5-okc"/>
+                        <outlet property="CurrencyThreeSwitch" destination="38O-ji-F8f" id="dHG-jX-7bY"/>
+                        <outlet property="CurrencyTwoLabel" destination="Zhr-JO-EOn" id="nhH-oW-mOG"/>
+                        <outlet property="CurrencyTwoSwitch" destination="Iul-lf-6Qf" id="1wp-Ds-6TE"/>
+                        <outlet property="EnterAmountLabel" destination="MKh-OX-8aB" id="RgF-Ny-dRn"/>
+                        <outlet property="header" destination="Ejf-2H-7Rw" id="FoR-tW-XVg"/>
                         <segue destination="1bw-zI-PLC" kind="presentation" identifier="toSummaryView" id="K4i-VK-sFs"/>
                     </connections>
                 </viewController>
