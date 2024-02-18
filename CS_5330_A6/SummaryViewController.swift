@@ -9,12 +9,21 @@ import UIKit
 
 class SummaryViewController: UIViewController {
 
+    @IBOutlet weak var BackToMainButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        BackToMainButton.setTitle("Back To Main", for: .normal)
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func onPressBackToMainButton(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
+    
+    
+    //TODO: Get the results from the conversions array from the CurrencyConverter, one issue I see right now is we dont currently have the name of the currencies, we call the resetCurrencyToConvert() when the calculate button is clicked, but maybe we need to reset after this view is set up?
 
     /*
     // MARK: - Navigation

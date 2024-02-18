@@ -30,15 +30,24 @@ class ViewController: UIViewController {
     @IBOutlet weak var ConvertButton: UIButton!
     
     var enteredAmount: Float  = 0.00
-    var currencyOneSelect: Bool = false
-    var currencyTwoSelect: Bool = false
-    var currencyThreeSelect: Bool = false
-    var currencyFourSelect: Bool = false
     
+    var currencyConverter = CurrencyConverter()
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupUI()
+        AmountTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        // Call your validation function here
+        let isValid = isInputValid(input: textField.text ?? "")
+        // Update your UI based on validation
+    }
+    
+    func isInputValid(input: String) -> Bool {
+        return true
     }
     
     // sets up the view controller scene
@@ -58,7 +67,9 @@ class ViewController: UIViewController {
     
     func setAmountInput() {
         EnterAmountLabel.text = "Enter USD:"
-        AmountTextField.text = "Amount"
+        AmountTextField.text = ""
+        AmountTextField.placeholder = "Enter Amount"
+        AmountTextField.keyboardType = .numberPad
     }
     
     func setCurrencyOne() {
@@ -85,9 +96,32 @@ class ViewController: UIViewController {
         ConvertButton.setTitle("Convert", for: .normal)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     // trigger conversion functions and segue
     @IBAction func onCalculateButtonPress(_ sender: UIButton) {
+        if(CurrencyOneSwitch.isOn == true) {
+            currencyConverter.setCurrencyToConvert(currency: CurrencyOneLabel.text!)
+        }
+        
+        if(CurrencyTwoSwitch.isOn == true) {
+            currencyConverter.setCurrencyToConvert(currency: CurrencyTwoLabel.text!)
+        }
+        
+        if(CurrencyThreeSwitch.isOn == true) {
+            currencyConverter.setCurrencyToConvert(currency: CurrencyThreeLabel.text!)
+        }
+        
+        if(CurrencyFourSwitch.isOn == true) {
+            currencyConverter.setCurrencyToConvert(currency: CurrencyFourLabel.text!)
+        }
+        // TODO: make the amount be a double and get the entered amount from the user
+        currencyConverter.setConversions(amount: 10.0)
+        
+     
+        currencyConverter.resetCurrencyToConvert()
         self.performSegue(withIdentifier: "toSummaryView", sender: self)
     }
     
