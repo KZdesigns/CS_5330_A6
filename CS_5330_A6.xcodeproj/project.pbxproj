@@ -60,17 +60,41 @@
 		03AADE142B795C5D009FA6E2 /* CS_5330_A6 */ = {
 			isa = PBXGroup;
 			children = (
+				03AADE2F2B81B9C8009FA6E2 /* View */,
+				03AADE2E2B81B9B2009FA6E2 /* Model */,
 				03AADE152B795C5D009FA6E2 /* AppDelegate.swift */,
 				03AADE172B795C5D009FA6E2 /* SceneDelegate.swift */,
-				03AADE192B795C5D009FA6E2 /* ViewController.swift */,
-				03AADE1B2B795C5D009FA6E2 /* Main.storyboard */,
-				03AADE292B7AFF86009FA6E2 /* SummaryViewController.swift */,
+				03AADE2D2B81B97E009FA6E2 /* Controller */,
 				03AADE1E2B795C5F009FA6E2 /* Assets.xcassets */,
-				03AADE202B795C5F009FA6E2 /* LaunchScreen.storyboard */,
 				03AADE232B795C5F009FA6E2 /* Info.plist */,
-				03AADE2B2B7C7B3F009FA6E2 /* CurrencyConverter.swift */,
 			);
 			path = CS_5330_A6;
+			sourceTree = "<group>";
+		};
+		03AADE2D2B81B97E009FA6E2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				03AADE192B795C5D009FA6E2 /* ViewController.swift */,
+				03AADE292B7AFF86009FA6E2 /* SummaryViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		03AADE2E2B81B9B2009FA6E2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				03AADE2B2B7C7B3F009FA6E2 /* CurrencyConverter.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		03AADE2F2B81B9C8009FA6E2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				03AADE1B2B795C5D009FA6E2 /* Main.storyboard */,
+				03AADE202B795C5F009FA6E2 /* LaunchScreen.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

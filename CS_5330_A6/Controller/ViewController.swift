@@ -10,47 +10,43 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var header: UILabel!
-    
+    @IBOutlet weak var ErrorMessageLabel: UILabel!
     @IBOutlet weak var EnterAmountLabel: UILabel!
-    
     @IBOutlet weak var AmountTextField: UITextField!
-    
     @IBOutlet weak var CurrencyOneLabel: UILabel!
     @IBOutlet weak var CurrencyOneSwitch: UISwitch!
-    
     @IBOutlet weak var CurrencyTwoLabel: UILabel!
     @IBOutlet weak var CurrencyTwoSwitch: UISwitch!
-    
     @IBOutlet weak var CurrencyThreeLabel: UILabel!
     @IBOutlet weak var CurrencyThreeSwitch: UISwitch!
-    
     @IBOutlet weak var CurrencyFourLabel: UILabel!
     @IBOutlet weak var CurrencyFourSwitch: UISwitch!
-    
     @IBOutlet weak var ConvertButton: UIButton!
     
-    var enteredAmount: Float  = 0.00
+    var isValid: Bool = true
     
     var currencyConverter = CurrencyConverter()
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         setupUI()
-        AmountTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        AmountTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged) 
+        CurrencyOneSwitch.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
+        CurrencyTwoSwitch.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
+        CurrencyThreeSwitch.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
+        CurrencyFourSwitch.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        // Call your validation function here
-        let isValid = isInputValid(input: textField.text ?? "")
-        // Update your UI based on validation
+        updateConvertButtonState()
+        setErrorMessage()
     }
     
-    func isInputValid(input: String) -> Bool {
-        return true
+    @objc func switchValueChanged(_ sender: UISwitch) {
+        updateConvertButtonState()
+        setErrorMessage()
     }
     
-    // sets up the view controller scene
     func setupUI() {
         setHeader()
         setAmountInput()
@@ -59,6 +55,20 @@ class ViewController: UIViewController {
         setCurrencyThree()
         setCurrencyFour()
         setButtonText()
+        setErrorMessage()
+    }
+    
+    func isInputValid(input: String) -> Bool {
+        return Int(input) != nil
+    }
+    
+    func setErrorMessage() {
+        if !isValid {
+            ErrorMessageLabel.text = "Error: Amount is not a valid integer"
+            ErrorMessageLabel.isHidden = false
+        } else {
+            ErrorMessageLabel.isHidden = true
+        }
     }
     
     func setHeader() {
@@ -94,13 +104,13 @@ class ViewController: UIViewController {
     
     func setButtonText() {
         ConvertButton.setTitle("Convert", for: .normal)
+        ConvertButton.isEnabled = false
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
-    // trigger conversion functions and segue
     @IBAction func onCalculateButtonPress(_ sender: UIButton) {
         if(CurrencyOneSwitch.isOn == true) {
             currencyConverter.setCurrencyToConvert(currency: CurrencyOneLabel.text!)
@@ -117,16 +127,30 @@ class ViewController: UIViewController {
         if(CurrencyFourSwitch.isOn == true) {
             currencyConverter.setCurrencyToConvert(currency: CurrencyFourLabel.text!)
         }
-        // TODO: make the amount be a double and get the entered amount from the user
-        currencyConverter.setConversions(amount: 10.0)
+        currencyConverter.setEnteredAmount(amount: Int(AmountTextField.text!)!)
+        currencyConverter.setConversions(amount: Double(AmountTextField.text!)!)
         
-     
-        currencyConverter.resetCurrencyToConvert()
+        
         self.performSegue(withIdentifier: "toSummaryView", sender: self)
+        currencyConverter.resetCurrencyToConvert()
+        currencyConverter.resetConversions()
     }
     
+    func updateConvertButtonState() {
+        let inputIsValid = isInputValid(input: AmountTextField.text ?? "")
+        let atLeastOneSwitchIsOn = CurrencyOneSwitch.isOn || CurrencyTwoSwitch.isOn || CurrencyThreeSwitch.isOn || CurrencyFourSwitch.isOn
+        isValid = inputIsValid
+        setErrorMessage()
+        ConvertButton.isEnabled = inputIsValid && atLeastOneSwitchIsOn
+    }
     
-    
-   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSummaryView" {
+            let converterNavigation = segue.destination as! SummaryViewController
+            converterNavigation.enteredAmount = AmountTextField.text!
+            converterNavigation.convertedCurrenciesLabels = currencyConverter.CurrencyToConvert
+            converterNavigation.convertedCurrenciesAmounts  = currencyConverter.conversions
+        }
+    }
 }
 

@@ -11,10 +11,10 @@ import Foundation
 struct CurrencyConverter {
     
     // rates for calculating US to Currency
-    let poundRate: Float = 1.0
-    let euroRate: Float = 2.0
-    let yenRate: Float = 3.0
-    let pesoRate: Float = 4.0
+    let poundRate: Float = 0.81
+    let euroRate: Float = 0.93
+    let yenRate: Float = 134.45
+    let pesoRate: Float = 18.76
     
     // holds a list of currencies to convert
     var CurrencyToConvert: [String] = []
@@ -22,10 +22,20 @@ struct CurrencyConverter {
     // holds a list of converted numbers
     var conversions: [Double] = []
     
+    // holds the value the user entered
+    var EnteredAmount: Int = 0
+    
     mutating func resetCurrencyToConvert() {
         CurrencyToConvert = []
     }
     
+    mutating func resetConversions() {
+        conversions = []
+    }
+    
+    mutating func setEnteredAmount(amount: Int) {
+        EnteredAmount = amount
+    }
   
     // Adds currency selected in controller to list of currencies to convert
     mutating func setCurrencyToConvert(currency: String) {
