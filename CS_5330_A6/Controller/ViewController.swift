@@ -127,11 +127,12 @@ class ViewController: UIViewController {
         if(CurrencyFourSwitch.isOn == true) {
             currencyConverter.setCurrencyToConvert(currency: CurrencyFourLabel.text!)
         }
-        currencyConverter.setEnteredAmount(amount: Int(AmountTextField.text!)!)
         currencyConverter.setConversions(amount: Double(AmountTextField.text!)!)
         
-        
+        // perform segue
         self.performSegue(withIdentifier: "toSummaryView", sender: self)
+        
+        // clean up data
         currencyConverter.resetCurrencyToConvert()
         currencyConverter.resetConversions()
     }
@@ -144,6 +145,7 @@ class ViewController: UIViewController {
         ConvertButton.isEnabled = inputIsValid && atLeastOneSwitchIsOn
     }
     
+    // pass data to SummaryViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSummaryView" {
             let converterNavigation = segue.destination as! SummaryViewController

@@ -25,8 +25,6 @@ class SummaryViewController: UIViewController {
     @IBOutlet weak var CurrencyFourLabel: UILabel!
     @IBOutlet weak var CurrencyFourAmount: UILabel!
     
-    
-    
     var enteredAmount : String = ""
     var convertedCurrenciesLabels: [String] = []
     var convertedCurrenciesAmounts: [Double] = []
@@ -65,18 +63,4 @@ class SummaryViewController: UIViewController {
     @IBAction func onPressBackToMainButton(_ sender: UIButton) {
         dismiss(animated: true)
     }
-    
-    
-    //TODO: Get the results from the conversions array from the CurrencyConverter, one issue I see right now is we dont currently have the name of the currencies, we call the resetCurrencyToConvert() when the calculate button is clicked, but maybe we need to reset after this view is set up?
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

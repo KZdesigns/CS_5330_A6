@@ -22,8 +22,6 @@ struct CurrencyConverter {
     // holds a list of converted numbers
     var conversions: [Double] = []
     
-    // holds the value the user entered
-    var EnteredAmount: Int = 0
     
     mutating func resetCurrencyToConvert() {
         CurrencyToConvert = []
@@ -33,9 +31,6 @@ struct CurrencyConverter {
         conversions = []
     }
     
-    mutating func setEnteredAmount(amount: Int) {
-        EnteredAmount = amount
-    }
   
     // Adds currency selected in controller to list of currencies to convert
     mutating func setCurrencyToConvert(currency: String) {
@@ -59,20 +54,17 @@ struct CurrencyConverter {
         }
         
         if(currency == "EURO") {
-            // do something
             convertedAmount = amount * Double(euroRate)
         }
         
         if(currency == "YEN") {
-            // do something
             convertedAmount = amount * Double(yenRate)
         }
         
         if(currency == "PESO") {
-            // do something
             convertedAmount = amount * Double(pesoRate)
         }
-        print(convertedAmount)
+
         return convertedAmount
     }
 }
